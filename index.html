@@ -1,8 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Game Tebak Angka</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+      background: #f0f0f0;
+    }
+    h1 {
+      color: #333;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+    }
+    #result {
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
 </head>
-<h1> AUDIO/ AUTOPLAY</h1>
-<body style = "background: url(black.jpg) : background -size: fixed:")
-<audio autoplay :
-<source src = "floating.mp3" type=" audio/mp3)
-</audio>
+<body>
+  <h1>🎯 Tebak Angka 1 - 10</h1>
+  <p>Saya sudah memilih angka antara 1 dan 10. Coba tebak!</p>
+
+  <input type="number" id="guess" min="1" max="10" placeholder="Masukkan angka">
+  <button onclick="checkGuess()">Tebak!</button>
+
+  <div id="result"></div>
+
+  <script>
+    let randomNumber = Math.floor(Math.random() * 10) + 1;
+    let attempts = 0;
+
+    function checkGuess() {
+      const guess = Number(document.getElementById('guess').value);
+      attempts++;
+
+      if (guess === randomNumber) {
+        document.getElementById('result').innerHTML =
+          `🎉 Selamat! Kamu menebak dengan benar dalam ${attempts} percobaan.`;
+      } else if (guess < 1 || guess > 10) {
+        document.getElementById('result').innerHTML = "⛔ Masukkan angka antara 1 dan 10.";
+      } else {
+        document.getElementById('result').innerHTML =
+          guess < randomNumber ? "📉 Terlalu kecil!" : "📈 Terlalu besar!";
+      }
+    }
+  </script>
 </body>
 </html>
+  <!-- Audio -->
+  <audio id="bgMusic" autoplay loop>
+    <source src="https://files.catbox.moe/i18a0a.mp3" type="audio/mpeg">
+  </audio>
+  <div 
